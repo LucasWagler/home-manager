@@ -84,7 +84,7 @@ let
     genSection "IMAPAccount ${name}" ({
       Host = imap.host;
       User = userName;
-      PassCmd = toString passwordCommand;
+      # PassCmd = toString passwordCommand;
     } // genTlsConfig imap.tls
       // optionalAttrs (imap.port != null) { Port = toString imap.port; }
       // mbsync.extraConfig.account) + "\n"
@@ -245,7 +245,7 @@ in {
       in [
         (checkAccounts (a: a.maildir == null) "Missing maildir configuration")
         (checkAccounts (a: a.imap == null) "Missing IMAP configuration")
-        (checkAccounts (a: a.passwordCommand == null) "Missing passwordCommand")
+        # (checkAccounts (a: a.passwordCommand == null) "Missing passwordCommand")
         (checkAccounts (a: a.userName == null) "Missing username")
       ];
     }
